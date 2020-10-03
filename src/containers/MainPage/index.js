@@ -14,8 +14,11 @@ const MainPage = ({ border }) => {
     <Context.Provider
       value={{
         clicks,
-        changeClick: (name) => {
-          name === "inc" ? setClicks(++clicks) : setClicks(--clicks);
+        inc: () => {
+          setClicks(++clicks);
+        },
+        dec: () => {
+          setClicks(--clicks);
         }
       }}
     >
