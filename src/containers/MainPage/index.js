@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
 import Footer from "../../components/Footer";
 
+import { Context } from "../../context";
+
 import styles from "./styles/MainPage.module.css";
 
-const MainPage = () => (
-  <div className={styles.mainPage}>
-    <Header />
-    <Main />
-    <Footer />
-  </div>
-);
+const MainPage = ({ border }) => {
+  let [clicks, setClicks] = useState(0);
+
+  return (
+    <Context.Provider
+      value={{
+        clicks,
+        changeClick: (name) => {
+          name === "inc" ? setClicks(++clicks) : setClicks(--clicks);
+        }
+      }}
+    >
+      <div className={styles.mainPage}>
+        <Header clicks={clicks} />
+        <Main border={border} />
+        <Footer />
+      </div>
+    </Context.Provider>
+  );
+};
 
 export default MainPage;

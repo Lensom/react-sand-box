@@ -5,7 +5,7 @@ import MainPage from "./containers/MainPage";
 
 const App = () => (
   <div className="App">
-    <MainPage />
+    <MainPage border={false} />
   </div>
 );
 
